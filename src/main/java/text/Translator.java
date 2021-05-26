@@ -1,46 +1,28 @@
 package text;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 
 public class Translator {
+    private static final char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /**
      * Method encrypts each text word using shift cipher
-     *
-     * @param text
      */
     static void encrypt(String text) {
-        char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
-        InputStream is = Translator.class.getClassLoader().getResourceAsStream(text);
 
-        try {
-            BufferedReader lineReader = new BufferedReader(new InputStreamReader(is));
-            String lineText;
+        char[] textChar = text.toCharArray();
+        char[] cipherText = new char[textChar.length];
+        for (int i = 0; i < textChar.length; i++) {
 
-            while ((lineText = lineReader.readLine()) != null) {
-
-                System.out.println(lineText);
-                char[] textChar = lineText.toCharArray();
-                char[] cipherText = new char[textChar.length];
-                for (int i = 0; i < textChar.length; i++) {
-
-                   int retVal = Arrays.binarySearch(alphabet, textChar[i]);
-                   retVal = retVal + 3;
-                   cipherText[i] = alphabet[retVal];
-                   System.out.println(cipherText[i]);
-
-                }
+            int retVal = Arrays.binarySearch(alphabet, textChar[i]);
+            if (retVal != -1) {
+                retVal = retVal + 3;
+                cipherText[i] = alphabet[retVal];
             }
-
-            lineReader.close();
-        } catch (IOException ex) {
-            System.err.println(ex);
         }
+        System.out.println("Cypher Message is :  " + new String(cipherText));
     }
+
 
     /**
      * Method decrypts words.
@@ -49,6 +31,20 @@ public class Translator {
      */
     static void decrypt(String text) {
 
+        char[] textChar = text.toCharArray();
+        char[] cipherText = new char[textChar.length];
+        for (int i = 0; i < textChar.length; i++) {
+
+            int retVal = Arrays.binarySearch(alphabet, textChar[i]);
+            if (retVal >= 0) {
+                retVal = retVal - 3;
+                cipherText[i] = alphabet[retVal];
+            }
+
+        }
+        System.out.println("Decoded Message is :  " + new String(cipherText));
     }
+
+
 }
 

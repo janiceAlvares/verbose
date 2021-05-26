@@ -8,10 +8,11 @@ class TranslatorTest  {
 
     @Test
     void testEncrypt() {
-        Translator.encrypt("sender.txt");
+        Translator.encrypt("HELLO");
     }
 
     @Test
     void testDecrypt() {
+        Translator.decrypt("KHOOR");
     }
 }
