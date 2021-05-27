@@ -5,31 +5,33 @@ import java.util.Arrays;
 public class Translator {
     private static final char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
-    /**
-     * Method encrypts each text word using shift cipher
-     */
-    static void encrypt(String text) {
+    public static void main(String[] args) {
+        System.out.println("Welcome to the cypher program.");
+        StringBuilder output = new StringBuilder();
+        String op = args[0];
+        String[] words = Arrays.stream(args, 1, args.length).toArray(String[]::new);
 
-        char[] textChar = text.toCharArray();
-        char[] cipherText = new char[textChar.length];
-        for (int i = 0; i < textChar.length; i++) {
+        if (!op.isEmpty() && op.equalsIgnoreCase("CIPHER")) {
+            for (String s : words)
+                output.append(encrypt(s.toUpperCase())).append(" ");
 
-            int retVal = Arrays.binarySearch(alphabet, textChar[i]);
-            if (retVal != -1) {
-                retVal = retVal + 3;
-                cipherText[i] = alphabet[retVal];
-            }
+        } else if (!op.isEmpty() && op.equalsIgnoreCase("DECIPHER")) {
+            for (String s : words)
+                output.append(decrypt(s.toUpperCase())).append(" ");
+
+        } else {
+            System.out.println("Please specify mode.");
+            System.exit(1);
         }
-        System.out.println("Cypher Message is :  " + new String(cipherText));
+        System.out.println("Output is " + output);
+
     }
 
 
     /**
-     * Method decrypts words.
-     *
-     * @param text Cipher text
+     * Method encrypts each text word using shift cipher
      */
-    static void decrypt(String text) {
+    public static String encrypt(String text) {
 
         char[] textChar = text.toCharArray();
         char[] cipherText = new char[textChar.length];
@@ -37,14 +39,29 @@ public class Translator {
 
             int retVal = Arrays.binarySearch(alphabet, textChar[i]);
             if (retVal >= 0) {
-                retVal = retVal - 3;
+                retVal = (retVal + 3) % alphabet.length;
+                cipherText[i] = alphabet[retVal];
+            }
+        }
+        return new String(cipherText);
+    }
+
+    public static String decrypt(String text) {
+
+        char[] textChar = text.toCharArray();
+        char[] cipherText = new char[textChar.length];
+        for (int i = 0; i < textChar.length; i++) {
+
+            int retVal = Arrays.binarySearch(alphabet, textChar[i]);
+            if (retVal >= 0) {
+                retVal = retVal < 3 ? alphabet.length + retVal - 3 : retVal - 3;
                 cipherText[i] = alphabet[retVal];
             }
 
-        }
-        System.out.println("Decoded Message is :  " + new String(cipherText));
-    }
 
+        }
+        return new String(cipherText);
+    }
 
 }
 
