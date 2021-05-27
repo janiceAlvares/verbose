@@ -2,28 +2,27 @@ package text;
 
 import java.util.Arrays;
 
+import static java.lang.String.join;
+import static java.util.Arrays.stream;
+
 public class Translator {
     private static final char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     public static void main(String[] args) {
         System.out.println("Welcome to the cypher program.");
-        StringBuilder output = new StringBuilder();
         String op = args[0];
-        String[] words = Arrays.stream(args, 1, args.length).toArray(String[]::new);
-
+        String[] words = stream(args, 1, args.length).toArray(String[]::new);
+        String message = join(",", words);
         if (!op.isEmpty() && op.equalsIgnoreCase("CIPHER")) {
-            for (String s : words)
-                output.append(encrypt(s.toUpperCase())).append(" ");
+            System.out.println("Ciphered message is ::::::::  " + encrypt(message));
 
         } else if (!op.isEmpty() && op.equalsIgnoreCase("DECIPHER")) {
-            for (String s : words)
-                output.append(decrypt(s.toUpperCase())).append(" ");
+            System.out.println("Deciphered message is :::::::  " + decrypt(message));
 
         } else {
             System.out.println("Please specify mode.");
             System.exit(1);
         }
-        System.out.println("Output is " + output);
 
     }
 
@@ -33,7 +32,7 @@ public class Translator {
      */
     public static String encrypt(String text) {
 
-        char[] textChar = text.toCharArray();
+        char[] textChar = text.toUpperCase().toCharArray();
         char[] cipherText = new char[textChar.length];
         for (int i = 0; i < textChar.length; i++) {
 
@@ -43,24 +42,24 @@ public class Translator {
                 cipherText[i] = alphabet[retVal];
             }
         }
-        return new String(cipherText);
+        return new String(cipherText).replace("\0", " ");
     }
 
     public static String decrypt(String text) {
 
-        char[] textChar = text.toCharArray();
-        char[] cipherText = new char[textChar.length];
+        char[] textChar = text.toUpperCase().toCharArray();
+        char[] decipherText = new char[textChar.length];
         for (int i = 0; i < textChar.length; i++) {
 
             int retVal = Arrays.binarySearch(alphabet, textChar[i]);
             if (retVal >= 0) {
                 retVal = retVal < 3 ? alphabet.length + retVal - 3 : retVal - 3;
-                cipherText[i] = alphabet[retVal];
+                decipherText[i] = alphabet[retVal];
             }
 
 
         }
-        return new String(cipherText);
+        return new String(decipherText).replace("\0", " ");
     }
 
 }
