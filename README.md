@@ -15,9 +15,9 @@ For example:
 
   To run Cipher mode use:
 
-      docker run docker quay.io/janicealvares/verbose-carnival1 cipher he told me i could never teach a llama to drive
+      docker run quay.io/janicealvares/verbose-carnival1 cipher he told me i could never teach a llama to drive
 
 
   To run Deciper mode use:
 
-     docker run docker quay.io/janicealvares/verbose-carnival1 decipher kh wrog ph l frxog qhyhu whdfk d oodpd wr gulyh 
+     docker run quay.io/janicealvares/verbose-carnival1 decipher kh wrog ph l frxog qhyhu whdfk d oodpd wr gulyh 
