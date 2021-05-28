@@ -7,7 +7,7 @@
 
 To run the application you can pull the pubilcy availale image of the application using this command:
 
->  docker pull quay.io/janicealvares/verbose-carnival1
+    docker pull quay.io/janicealvares/verbose-carnival1
 
 The program accepts your text message as program arguments and should be prefixed with a mode based on the operation you would like to perform.Acceptable values are  CIPHER or DECIPHER ignoring case.
 
