@@ -10,6 +10,10 @@ public class Translator {
 
     public static void main(String[] args) {
         System.out.println("Welcome to the cypher program.");
+        if(args.length == 0){
+            System.out.println("Please enter your message as program arguments.");
+            System.exit(0);
+        }
         String op = args[0];
         String[] words = stream(args, 1, args.length).toArray(String[]::new);
         String message = join(",", words);
@@ -20,8 +24,8 @@ public class Translator {
             System.out.println("Deciphered message is :::::::  " + decrypt(message));
 
         } else {
-            System.out.println("Please specify mode.");
-            System.exit(1);
+            System.out.println("Please chose mode of operation: CIPHER or DECIPHER.");
+            System.exit(0);
         }
 
     }
