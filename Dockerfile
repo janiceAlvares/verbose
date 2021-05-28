@@ -1,5 +1,4 @@
-FROM java:8
-WORKDIR /
-ADD verbose-1.0.jar verbose-1.0.jar
-EXPOSE 8080
-CMD java - jar verbose-1.0.jar encode hello world
+FROM openjdk:8-jdk-alpine
+ARG JAR_FILE=build/libs/\*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java","-jar","/app.jar"]
