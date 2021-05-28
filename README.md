@@ -5,14 +5,19 @@
 
 **Red Hat Docker Container Status** [![Docker Repository on Quay](https://quay.io/repository/janicealvares/verbose-carnival1/status "Docker Repository on Quay")](https://quay.io/repository/janicealvares/verbose-carnival1)
 
-To run application use the follwing commands on docker:
+To run the application you can pull the pubilcy availale image of the application using this command:
 
 >  docker pull quay.io/janicealvares/verbose-carnival1
 
-To test cipher 
+The program accepts your text message as program arguments and should be prefixed with a mode based on the operation you would like to perform.Acceptable values are  CIPHER or DECIPHER ignoring case.
 
->  docker run docker pull quay.io/janicealvares/verbose-carnival1 cipher he told me i could never teach a llama to drive 
+For example:
 
-To test deciper 
+  To test cipher run
 
-> docker run docker pull quay.io/janicealvares/verbose-carnival1 decipher kh wrog ph l frxog qhyhu whdfk d oodpd wr gulyh 
+      docker run docker pull quay.io/janicealvares/verbose-carnival1 cipher he told me i could never teach a llama to drive
+
+
+  To test deciper 
+
+     docker run docker pull quay.io/janicealvares/verbose-carnival1 decipher kh wrog ph l frxog qhyhu whdfk d oodpd wr gulyh 
