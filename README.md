@@ -13,11 +13,11 @@ The program accepts your text message as program arguments and should be prefixe
 
 For example:
 
-  To test cipher run
+  To run Cipher mode use:
 
       docker run docker pull quay.io/janicealvares/verbose-carnival1 cipher he told me i could never teach a llama to drive
 
 
-  To test deciper 
+  To run Deciper mode use:
 
      docker run docker pull quay.io/janicealvares/verbose-carnival1 decipher kh wrog ph l frxog qhyhu whdfk d oodpd wr gulyh 
