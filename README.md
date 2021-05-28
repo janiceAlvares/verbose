@@ -5,7 +5,7 @@
 
 **Red Hat Docker Container Status** [![Docker Repository on Quay](https://quay.io/repository/janicealvares/verbose-carnival1/status "Docker Repository on Quay")](https://quay.io/repository/janicealvares/verbose-carnival1)
 
-To run the application you can pull the pubilcy availale image of the application using this command:
+To run the application you can pull the latest pubilc image of the application using this command:
 
     docker pull quay.io/janicealvares/verbose-carnival1
 
